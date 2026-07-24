@@ -83,20 +83,17 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Photo slot — add your image to public/don-soby.jpg, then replace the placeholder div below with the provided <img> */}
         <div className="relative mx-auto md:mx-0">
           <div
             className="absolute -inset-4 rounded-[2rem] opacity-70 blur-2xl"
             style={{ background: "var(--gradient-accent)" }}
             aria-hidden
           />
-          <div className="relative flex h-72 w-72 items-center justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 sm:h-80 sm:w-80">
-            <span className="text-center text-sm text-white/40">
-              Your photo
-              <br />
-              <span className="text-xs">(public/don-soby.jpg)</span>
-            </span>
-          </div>
+          <img
+            src="/don-soby.jpg"
+            alt="Don Soby"
+            className="relative h-72 w-72 rounded-[2rem] border border-white/10 object-cover sm:h-80 sm:w-80"
+          />
         </div>
       </div>
 
