@@ -90,19 +90,7 @@ export function Hero() {
             style={{ background: "var(--gradient-accent)" }}
             aria-hidden
           />
-          <div className="glass-card relative h-72 w-72 overflow-hidden rounded-[2rem] sm:h-80 sm:w-80">
-            {/* PHOTO PLACEHOLDER — replace this block with:
-                <img src="/don-soby.jpg" alt="Don Soby" className="h-full w-full object-cover" />
-                Put your file in /public/don-soby.jpg (or import from src/assets) */}
-            <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.2),transparent_60%),radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.25),transparent_60%)]">
-              <div className="text-center px-6">
-                <div className="font-display text-6xl glow-text">DS</div>
-                <div className="mt-3 text-xs uppercase tracking-[0.3em] text-white/50">
-                  Add photo here
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="/don-soby.jpg" alt="Don Soby" className="h-full w-full object-cover" />
         </div>
       </div>
 
