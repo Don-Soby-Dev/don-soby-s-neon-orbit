@@ -19,7 +19,10 @@ export const Route = createFileRoute("/")({
         content:
           "Portfolio of Don Soby — Full Stack Python developer from Kerala, India. High-throughput Django, FastAPI, React 19, and distributed web architecture.",
       },
-      { property: "og:title", content: "Don Soby — Full Stack Python Developer & Systems Architect" },
+      {
+        property: "og:title",
+        content: "Don Soby — Full Stack Python Developer & Systems Architect",
+      },
       {
         property: "og:description",
         content:
@@ -28,7 +31,10 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Don Soby — Full Stack Python Developer & Systems Architect" },
+      {
+        name: "twitter:title",
+        content: "Don Soby — Full Stack Python Developer & Systems Architect",
+      },
       {
         name: "twitter:description",
         content:

@@ -98,8 +98,8 @@ export function SiteLoader() {
             {progress < 40
               ? "Mounting runtime context..."
               : progress < 85
-              ? "Assembling architectural blueprints..."
-              : "System ready."}
+                ? "Assembling architectural blueprints..."
+                : "System ready."}
           </p>
         </div>
 

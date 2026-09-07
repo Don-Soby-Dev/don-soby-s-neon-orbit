@@ -42,8 +42,8 @@ export function Hero() {
 
             {/* Subtitle */}
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-xl sm:leading-relaxed">
-              I architect high-throughput Python backends, type-safe APIs, and reactive web experiences
-              where complexity turns into effortless reliability.
+              I architect high-throughput Python backends, type-safe APIs, and reactive web
+              experiences where complexity turns into effortless reliability.
             </p>
 
             {/* Action Buttons */}
@@ -88,7 +88,8 @@ export function Hero() {
             <div
               className="absolute -inset-4 rounded-[2.5rem] opacity-40 blur-2xl transition-opacity group-hover:opacity-70"
               style={{
-                background: "linear-gradient(135deg, rgba(0,212,255,0.5) 0%, rgba(139,92,246,0.5) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(0,212,255,0.5) 0%, rgba(139,92,246,0.5) 100%)",
               }}
               aria-hidden="true"
             />
@@ -123,7 +124,9 @@ export function Hero() {
           aria-label="Scroll to philosophy"
           className="group flex flex-col items-center gap-2 text-white/40 transition hover:text-white/80"
         >
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll to explore</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
+            Scroll to explore
+          </span>
           <ArrowDown className="h-3.5 w-3.5 animate-bounce text-[#00d4ff]" />
         </a>
       </div>

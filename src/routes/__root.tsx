@@ -45,9 +45,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#030508] px-4 text-white">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-white">
-          This page didn't load
-        </h1>
+        <h1 className="text-xl font-semibold tracking-tight text-white">This page didn't load</h1>
         <p className="mt-2 text-sm text-white/60">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
@@ -85,7 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Portfolio of Don Soby — Full Stack Python developer from Kerala, India. High-throughput Django, FastAPI, React 19, and distributed web architecture.",
       },
       { name: "author", content: "Don Soby" },
-      { property: "og:title", content: "Don Soby — Full Stack Python Developer & Systems Architect" },
+      {
+        property: "og:title",
+        content: "Don Soby — Full Stack Python Developer & Systems Architect",
+      },
       {
         property: "og:description",
         content:

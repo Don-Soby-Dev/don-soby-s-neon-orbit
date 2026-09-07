@@ -60,7 +60,8 @@ class OrderViewSet(viewsets.ReadOnlyModelViewSet):
         )`,
     simulation: {
       command: "curl -X GET https://api.donsoby.dev/v1/orders/ -H 'Authorization: Bearer ***'",
-      output: 'HTTP/2 200 OK\n{"count": 24, "results": [{"id": 1042, "status": "CONFIRMED", "items_count": 3, "total": 149.00}]}',
+      output:
+        'HTTP/2 200 OK\n{"count": 24, "results": [{"id": 1042, "status": "CONFIRMED", "items_count": 3, "total": 149.00}]}',
       latency: "18ms",
       status: "200 OK",
     },
@@ -100,8 +101,10 @@ async def ingest_event(payload: EventPayload, bg_tasks: BackgroundTasks):
     bg_tasks.add_task(dispatch_webhook, payload)
     return {"status": "queued", "event_id": f"evt_{hash(payload.user_id)}" }`,
     simulation: {
-      command: "curl -X POST https://api.donsoby.dev/api/v1/events -d '{\"user_id\":\"usr_9281\",\"event_type\":\"checkout.completed\"}'",
-      output: 'HTTP/2 202 Accepted\n{"status": "queued", "event_id": "evt_49810294821", "worker": "async-pool-04"}',
+      command:
+        'curl -X POST https://api.donsoby.dev/api/v1/events -d \'{"user_id":"usr_9281","event_type":"checkout.completed"}\'',
+      output:
+        'HTTP/2 202 Accepted\n{"status": "queued", "event_id": "evt_49810294821", "worker": "async-pool-04"}',
       latency: "4.2ms",
       status: "202 ACCEPTED",
     },
@@ -143,7 +146,8 @@ def get_product_detail(product_id: int) -> dict:
     return payload`,
     simulation: {
       command: "redis-cli GET catalog:product:108",
-      output: '{\n  "id": 108,\n  "title": "Minimalist Cyber Hoodie",\n  "stock": 42,\n  "cache_state": "HIT"\n}',
+      output:
+        '{\n  "id": 108,\n  "title": "Minimalist Cyber Hoodie",\n  "stock": 42,\n  "cache_state": "HIT"\n}',
       latency: "1.8ms",
       status: "CACHE_HIT",
     },
@@ -181,8 +185,10 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s CMD curl -f http://localhost:8000/health || exit 1
 CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "-w", "4", "-k", "uvicorn.workers.UvicornWorker"]`,
     simulation: {
-      command: "docker build -t donsoby/web-engine:latest . && docker run --rm donsoby/web-engine healthcheck",
-      output: 'Container health status: OK\nMemory footprint: 84MB\nListening on 0.0.0.0:8000 (Workers: 4)',
+      command:
+        "docker build -t donsoby/web-engine:latest . && docker run --rm donsoby/web-engine healthcheck",
+      output:
+        "Container health status: OK\nMemory footprint: 84MB\nListening on 0.0.0.0:8000 (Workers: 4)",
       latency: "Active",
       status: "HEALTHY",
     },
@@ -232,8 +238,8 @@ export function Workbench() {
               Systems toolbench for <span className="glow-gradient-text">production code.</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
-              Inspect the exact backend blueprints, query optimizations, and container configurations
-              I build with across production stacks.
+              Inspect the exact backend blueprints, query optimizations, and container
+              configurations I build with across production stacks.
             </p>
           </div>
 
@@ -264,7 +270,9 @@ export function Workbench() {
                         : "text-white/60 hover:bg-white/5 hover:text-white"
                     }`}
                   >
-                    <Icon className={`h-3.5 w-3.5 ${isActive ? "text-[#00d4ff]" : "text-white/40"}`} />
+                    <Icon
+                      className={`h-3.5 w-3.5 ${isActive ? "text-[#00d4ff]" : "text-white/40"}`}
+                    />
                     <span>{tab.name}</span>
                   </button>
                 );
@@ -279,7 +287,9 @@ export function Workbench() {
                 className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-white/80 transition hover:border-[#00d4ff]/50 hover:bg-[#00d4ff]/10 hover:text-white"
                 title="Simulate terminal request"
               >
-                <Play className={`h-3 w-3 ${simulating ? "animate-spin text-[#00d4ff]" : "text-emerald-400"}`} />
+                <Play
+                  className={`h-3 w-3 ${simulating ? "animate-spin text-[#00d4ff]" : "text-emerald-400"}`}
+                />
                 <span>{simulating ? "Running..." : "Test Endpoint"}</span>
               </button>
 
@@ -324,13 +334,9 @@ export function Workbench() {
                   <span>{current.tag}</span>
                 </div>
 
-                <h3 className="mt-4 font-display text-xl font-bold text-white">
-                  {current.title}
-                </h3>
+                <h3 className="mt-4 font-display text-xl font-bold text-white">{current.title}</h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-white/65">
-                  {current.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/65">{current.description}</p>
 
                 {/* Metrics Proof Pills */}
                 <div className="mt-6 grid grid-cols-3 gap-3">

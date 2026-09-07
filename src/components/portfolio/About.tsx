@@ -81,9 +81,9 @@ export function About() {
             <div className="mt-8">
               <h3 className="font-display text-2xl font-bold text-white">Schema first.</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/65">
-                Before writing API endpoints or designing client views, enforce strict data integrity,
-                relational normalization, and optimal indexing inside PostgreSQL. An uncompromised schema
-                prevents months of technical debt.
+                Before writing API endpoints or designing client views, enforce strict data
+                integrity, relational normalization, and optimal indexing inside PostgreSQL. An
+                uncompromised schema prevents months of technical debt.
               </p>
             </div>
           </div>
@@ -94,7 +94,9 @@ export function About() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
                 <Eye className="h-5 w-5" />
               </div>
-              <span className="font-mono text-[11px] text-white/40 uppercase">02 / Observability</span>
+              <span className="font-mono text-[11px] text-white/40 uppercase">
+                02 / Observability
+              </span>
             </div>
 
             <div className="mt-8">
@@ -129,14 +131,18 @@ export function About() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
                 <RefreshCw className="h-5 w-5" />
               </div>
-              <span className="font-mono text-[11px] text-white/40 uppercase">04 / Reliability</span>
+              <span className="font-mono text-[11px] text-white/40 uppercase">
+                04 / Reliability
+              </span>
             </div>
 
             <div className="mt-8">
-              <h3 className="font-display text-2xl font-bold text-white">Deterministic & idempotent.</h3>
+              <h3 className="font-display text-2xl font-bold text-white">
+                Deterministic & idempotent.
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-white/65">
-                Every mutation endpoint handles retries, payment webhooks, and unexpected disconnects
-                safely using transaction savepoints and atomic idempotency keys.
+                Every mutation endpoint handles retries, payment webhooks, and unexpected
+                disconnects safely using transaction savepoints and atomic idempotency keys.
               </p>
             </div>
           </div>
@@ -151,10 +157,12 @@ export function About() {
             </div>
 
             <div className="mt-8">
-              <h3 className="font-display text-2xl font-bold text-white">Ship the complete loop.</h3>
+              <h3 className="font-display text-2xl font-bold text-white">
+                Ship the complete loop.
+              </h3>
               <p className="mt-3 text-sm leading-relaxed text-white/65">
-                A system is complete when the reactive frontend and Python backend form a seamless union.
-                Optimistic UI updates, clean loading states, and instant client feedback.
+                A system is complete when the reactive frontend and Python backend form a seamless
+                union. Optimistic UI updates, clean loading states, and instant client feedback.
               </p>
             </div>
           </div>

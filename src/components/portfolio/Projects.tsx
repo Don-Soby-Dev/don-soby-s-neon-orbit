@@ -19,7 +19,8 @@ const projects: Project[] = [
     index: "01",
     category: "Full-Stack Commerce / Python + Django",
     title: "ONGO E-Commerce Platform",
-    challengeHeadline: "Turning high-velocity apparel catalog browsing into reliable, frictionless checkout.",
+    challengeHeadline:
+      "Turning high-velocity apparel catalog browsing into reliable, frictionless checkout.",
     tags: ["Django 5", "Python", "HTML5/CSS3", "PostgreSQL", "Session Engine", "Responsive UI"],
     image: "/projects/ongo-ecommerce.jpg",
     metrics: [
@@ -38,7 +39,8 @@ const projects: Project[] = [
     index: "02",
     category: "Healthcare Infrastructure / Systems & Workflows",
     title: "MediSync Hospital Management",
-    challengeHeadline: "Automating doctor-patient coordination with zero schedule collisions and verified records.",
+    challengeHeadline:
+      "Automating doctor-patient coordination with zero schedule collisions and verified records.",
     tags: ["Django", "Python", "SQLite / Postgres", "Role-Based ACL", "Appointment Engine"],
     image: "/projects/medisync-hospital.jpg",
     metrics: [
@@ -56,7 +58,8 @@ const projects: Project[] = [
     index: "03",
     category: "Identity & Cloud Security / Python Systems",
     title: "Sentinel User Administration & IAM",
-    challengeHeadline: "Centralized credential governance, session revocation, and security audit trails.",
+    challengeHeadline:
+      "Centralized credential governance, session revocation, and security audit trails.",
     tags: ["Python", "CLI & REST", "RBAC Matrix", "Audit Logging", "Session Revocation"],
     image: "/projects/sentinel-iam.jpg",
     metrics: [
@@ -74,7 +77,8 @@ const projects: Project[] = [
     index: "04",
     category: "Computer Science / Algorithm Optimization",
     title: "AlgoCore — DSA Benchmark Suite",
-    challengeHeadline: "Handcrafted data structures and algorithmic routines optimized for O(log n) efficiency.",
+    challengeHeadline:
+      "Handcrafted data structures and algorithmic routines optimized for O(log n) efficiency.",
     tags: ["Python 3.12", "Jupyter", "Graph Theory", "Dynamic Programming", "Pytest Suite"],
     image: "/projects/algocore-python.svg",
     metrics: [
@@ -105,8 +109,8 @@ export function Projects() {
               Confidence. <span className="glow-gradient-text">Throughput.</span> Systems.
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
-              Detailed case studies of full-stack platforms, backend systems, and architectural engines
-              built from the ground up.
+              Detailed case studies of full-stack platforms, backend systems, and architectural
+              engines built from the ground up.
             </p>
           </div>
 
@@ -194,18 +198,14 @@ export function Projects() {
                   <h4 className="font-mono text-xs uppercase tracking-widest text-white/50">
                     The Challenge
                   </h4>
-                  <p className="mt-2.5 text-sm leading-relaxed text-white/70">
-                    {p.challenge}
-                  </p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-white/70">{p.challenge}</p>
                 </div>
 
                 <div className="rounded-xl border border-white/5 bg-white/[0.01] p-5">
                   <h4 className="font-mono text-xs uppercase tracking-widest text-[#00d4ff]">
                     The Solution
                   </h4>
-                  <p className="mt-2.5 text-sm leading-relaxed text-white/70">
-                    {p.solution}
-                  </p>
+                  <p className="mt-2.5 text-sm leading-relaxed text-white/70">{p.solution}</p>
                 </div>
               </div>
 
