@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteLoader } from "@/components/portfolio/SiteLoader";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
@@ -11,26 +12,26 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Don Soby — Full Stack Python Developer" },
+      { title: "Don Soby — Full Stack Python Developer & Systems Architect" },
       {
         name: "description",
         content:
-          "Portfolio of Don Soby — Full Stack Python developer from Kerala, India. Django, React, and modern web tooling.",
+          "Portfolio of Don Soby — Full Stack Python developer from Kerala, India. High-throughput Django, FastAPI, React 19, and distributed web architecture.",
       },
-      { property: "og:title", content: "Don Soby — Full Stack Python Developer" },
+      { property: "og:title", content: "Don Soby — Full Stack Python Developer & Systems Architect" },
       {
         property: "og:description",
         content:
-          "Django + React developer from Kerala building fast, modern full-stack applications.",
+          "Django + React developer from Kerala building fast, scalable full-stack applications.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Don Soby — Full Stack Python Developer" },
+      { name: "twitter:title", content: "Don Soby — Full Stack Python Developer & Systems Architect" },
       {
         name: "twitter:description",
         content:
-          "Django + React developer from Kerala building fast, modern full-stack applications.",
+          "Django + React developer from Kerala building fast, scalable full-stack applications.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -39,7 +40,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="relative min-h-screen bg-[#0a0e17] text-white">
+    <div className="relative min-h-screen bg-[#030508] text-white">
+      <SiteLoader />
       <Nav />
       <Hero />
       <About />
@@ -47,6 +49,6 @@ function Index() {
       <Projects />
       <Contact />
       <Footer />
-    </main>
+    </div>
   );
 }
