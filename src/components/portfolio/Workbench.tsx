@@ -218,18 +218,22 @@ export function Workbench() {
     setTimeout(() => {
       setSimulating(false);
       setSimOutput(current.simulation.output);
-      toast.info(`Execution finished in ${current.simulation.latency}`, {
-        description: `HTTP status: ${current.simulation.status}`,
+      toast.success(`Endpoint Benchmark: ${current.simulation.status}`, {
+        description: `${current.name} responded in ${current.simulation.latency} with zero errors.`,
+        duration: 4500,
       });
-    }, 450);
+    }, 400);
   };
 
   return (
-    <section id="workbench" className="relative py-28 border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+    <section
+      id="workbench"
+      className="relative py-20 sm:py-28 border-t border-white/5 overflow-hidden"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 min-w-0">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          <div>
+          <div className="min-w-0">
             <div className="section-kicker">
               <span className="h-1.5 w-1.5 rounded-full bg-[#00d4ff]" />
               <span>00 — Interactive Architecture Workbench</span>
@@ -243,17 +247,17 @@ export function Workbench() {
             </p>
           </div>
 
-          <div className="font-mono text-xs text-white/40 hidden sm:block">
+          <div className="font-mono text-xs text-white/40 hidden sm:block shrink-0">
             [ PYTHON 3.12 · DJANGO 5 · FASTAPI · REDIS ]
           </div>
         </div>
 
         {/* Workbench Card Shell */}
-        <div className="mt-12 rounded-2xl border border-white/10 bg-[#060a12]/90 backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.8)] overflow-hidden">
+        <div className="mt-10 sm:mt-12 rounded-2xl border border-white/10 bg-[#060a12]/90 backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.8)] overflow-hidden min-w-0 w-full">
           {/* Tab Navigation Toolbar */}
-          <div className="flex flex-wrap items-center justify-between border-b border-white/8 bg-white/[0.02] px-4 py-2.5 gap-3">
-            {/* Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/8 bg-white/[0.02] p-3 sm:px-4 sm:py-2.5 gap-3 min-w-0">
+            {/* Scrollable Tabs */}
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full sm:w-auto py-1 min-w-0">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = tab.id === activeTab;
@@ -264,14 +268,14 @@ export function Workbench() {
                       setActiveTab(tab.id);
                       setSimOutput(null);
                     }}
-                    className={`flex items-center gap-2 rounded-lg px-3.5 py-2 font-mono text-xs transition-all ${
+                    className={`flex items-center gap-2 rounded-lg px-3.5 py-2 font-mono text-xs whitespace-nowrap shrink-0 transition-all ${
                       isActive
                         ? "border border-[#00d4ff]/40 bg-[#00d4ff]/10 text-white shadow-[0_0_15px_rgba(0,212,255,0.15)] font-semibold"
                         : "text-white/60 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     <Icon
-                      className={`h-3.5 w-3.5 ${isActive ? "text-[#00d4ff]" : "text-white/40"}`}
+                      className={`h-3.5 w-3.5 shrink-0 ${isActive ? "text-[#00d4ff]" : "text-white/40"}`}
                     />
                     <span>{tab.name}</span>
                   </button>
@@ -280,17 +284,17 @@ export function Workbench() {
             </div>
 
             {/* Actions: Copy & Run */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-end gap-2 w-full sm:w-auto border-t sm:border-t-0 border-white/5 pt-2 sm:pt-0 shrink-0">
               <button
                 onClick={handleSimulate}
                 disabled={simulating}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-white/80 transition hover:border-[#00d4ff]/50 hover:bg-[#00d4ff]/10 hover:text-white"
+                className="flex items-center gap-1.5 rounded-lg border border-[#00d4ff]/30 bg-[#00d4ff]/10 px-3.5 py-1.5 font-mono text-xs text-white font-medium transition hover:border-[#00d4ff]/60 hover:bg-[#00d4ff]/20 active:scale-95"
                 title="Simulate terminal request"
               >
                 <Play
                   className={`h-3 w-3 ${simulating ? "animate-spin text-[#00d4ff]" : "text-emerald-400"}`}
                 />
-                <span>{simulating ? "Running..." : "Test Endpoint"}</span>
+                <span>{simulating ? "Executing..." : "Test Endpoint"}</span>
               </button>
 
               <button
@@ -313,21 +317,45 @@ export function Workbench() {
             </div>
           </div>
 
-          {/* Workbench Body */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
-            {/* Left: Code Viewer */}
-            <div className="border-b lg:border-b-0 lg:border-r border-white/8 p-6 font-mono text-xs overflow-x-auto bg-[#030508]/60">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5 text-[11px] text-white/40">
-                <span>{current.tag}</span>
-                <span>Python 3.12</span>
+          {/* Prominent Feedback Banner for Mobile & Desktop */}
+          {(simulating || simOutput) && (
+            <div className="flex items-center justify-between border-b border-[#00d4ff]/25 bg-[#00d4ff]/10 px-4 py-2.5 font-mono text-xs text-white animate-in fade-in duration-200">
+              <div className="flex items-center gap-2 truncate">
+                <span
+                  className={`h-2 w-2 shrink-0 rounded-full ${
+                    simulating ? "bg-[#00d4ff] animate-ping" : "bg-emerald-400"
+                  }`}
+                />
+                <span className="font-semibold text-[#00d4ff] truncate">
+                  {simulating
+                    ? "Executing request benchmark..."
+                    : `✓ Status: ${current.simulation.status}`}
+                </span>
               </div>
-              <pre className="text-white/85 leading-relaxed overflow-x-auto selection:bg-[#00d4ff]/30">
+              <div className="flex items-center gap-2 text-[11px] text-white/80 shrink-0 ml-2">
+                <span className="hidden xs:inline">Latency:</span>
+                <span className="rounded bg-[#00d4ff]/20 px-2 py-0.5 text-[#00d4ff] font-bold">
+                  {current.simulation.latency}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Workbench Body */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] min-w-0 w-full">
+            {/* Left: Code Viewer */}
+            <div className="min-w-0 w-full border-b lg:border-b-0 lg:border-r border-white/8 p-4 sm:p-6 font-mono text-xs overflow-x-auto bg-[#030508]/60">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5 text-[11px] text-white/40">
+                <span className="truncate">{current.tag}</span>
+                <span className="shrink-0 ml-2">Python 3.12</span>
+              </div>
+              <pre className="max-w-full overflow-x-auto text-white/85 leading-relaxed selection:bg-[#00d4ff]/30">
                 <code>{current.code}</code>
               </pre>
             </div>
 
             {/* Right: Architecture Blueprint & Metrics */}
-            <div className="p-6 flex flex-col justify-between bg-white/[0.01]">
+            <div className="min-w-0 w-full p-4 sm:p-6 flex flex-col justify-between bg-white/[0.01]">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[11px] text-[#00d4ff]">
                   <span className="h-1 w-1 rounded-full bg-[#00d4ff]" />
@@ -339,16 +367,16 @@ export function Workbench() {
                 <p className="mt-3 text-sm leading-relaxed text-white/65">{current.description}</p>
 
                 {/* Metrics Proof Pills */}
-                <div className="mt-6 grid grid-cols-3 gap-3">
+                <div className="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
                   {current.metrics.map((m) => (
                     <div
                       key={m.label}
-                      className="rounded-xl border border-white/8 bg-white/[0.02] p-3 text-center"
+                      className="rounded-xl border border-white/8 bg-white/[0.02] p-2.5 sm:p-3 text-center min-w-0"
                     >
-                      <div className="font-mono text-sm font-bold text-[#00d4ff] sm:text-base">
+                      <div className="font-mono text-xs sm:text-base font-bold text-[#00d4ff] truncate">
                         {m.value}
                       </div>
-                      <div className="mt-1 font-mono text-[10px] text-white/50 uppercase">
+                      <div className="mt-1 font-mono text-[9px] sm:text-[10px] text-white/50 uppercase truncate">
                         {m.label}
                       </div>
                     </div>
@@ -357,7 +385,7 @@ export function Workbench() {
               </div>
 
               {/* Simulation Result Drawer */}
-              <div className="mt-8 rounded-xl border border-white/10 bg-[#030508] p-4">
+              <div className="mt-8 rounded-xl border border-white/10 bg-[#030508] p-4 min-w-0 w-full">
                 <div className="flex items-center justify-between text-[11px] font-mono text-white/40 pb-2 border-b border-white/5">
                   <span className="flex items-center gap-1.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -371,7 +399,7 @@ export function Workbench() {
                   {current.simulation.command}
                 </div>
 
-                <div className="mt-2 rounded-lg bg-white/[0.02] p-2.5 font-mono text-[11px] text-emerald-300 whitespace-pre-wrap">
+                <div className="mt-2 rounded-lg bg-white/[0.02] p-2.5 font-mono text-[11px] text-emerald-300 whitespace-pre-wrap overflow-x-auto">
                   {simOutput || current.simulation.output}
                 </div>
               </div>

@@ -73,7 +73,7 @@ export function Contact() {
         <div className="perspective-grid-overlay" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6 sm:px-8 text-center">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 md:px-8 text-center">
         {/* Section Kicker */}
         <div className="section-kicker mx-auto justify-center">
           <span className="h-1.5 w-1.5 rounded-full bg-[#00d4ff]" />
@@ -100,7 +100,7 @@ export function Contact() {
               </div>
               <a
                 href={`mailto:${email}`}
-                className="mt-1 font-mono text-base font-semibold text-white transition hover:text-[#00d4ff]"
+                className="mt-1 font-mono text-base font-semibold text-white transition hover:text-[#00d4ff] break-all sm:break-normal"
               >
                 {email}
               </a>

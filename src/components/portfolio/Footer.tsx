@@ -3,7 +3,7 @@ import { ArrowUp } from "lucide-react";
 export function Footer() {
   return (
     <footer className="relative border-t border-white/8 bg-[#020305] py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row sm:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6 md:px-8">
         {/* Left: Copyright */}
         <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
           <span className="font-display font-bold text-white text-sm">DonSoby.</span>

@@ -22,17 +22,17 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 w-full ${
         scrolled
-          ? "border-b border-white/8 bg-[#030508]/85 backdrop-blur-xl py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "bg-transparent py-5"
+          ? "border-b border-white/8 bg-[#030508]/90 backdrop-blur-xl py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Brand */}
         <a
           href="#top"
-          className="group flex items-center gap-2 font-display text-lg font-bold tracking-tight text-white transition hover:opacity-80"
+          className="group flex items-center gap-2 font-display text-lg font-bold tracking-tight text-white transition hover:opacity-80 shrink-0"
           aria-label="Don Soby portfolio home"
         >
           <span>DonSoby.</span>
@@ -52,8 +52,8 @@ export function Nav() {
           ))}
         </div>
 
-        {/* Status Pill & Action */}
-        <div className="hidden sm:flex items-center gap-4">
+        {/* Status Pill & Action (Desktop only) */}
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
           <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] text-white/70">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>Available for opportunities</span>
@@ -68,9 +68,9 @@ export function Nav() {
           </a>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
+        {/* Mobile Hamburger Toggle (Fixed, shrink-0, always visible on mobile) */}
         <button
-          className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+          className="md:hidden flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10 ml-auto"
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Toggle navigation menu"
         >
@@ -80,7 +80,7 @@ export function Nav() {
 
       {/* Mobile Drawer */}
       {open && (
-        <div className="md:hidden border-b border-white/10 bg-[#030508]/95 px-6 py-6 backdrop-blur-2xl">
+        <div className="md:hidden border-b border-white/10 bg-[#030508]/98 px-6 py-6 backdrop-blur-2xl shadow-2xl">
           <div className="flex flex-col gap-4">
             <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 mb-2">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -92,7 +92,7 @@ export function Nav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-lg font-medium text-white/80 transition hover:text-[#00d4ff]"
+                className="font-display text-lg font-medium text-white/80 transition hover:text-[#00d4ff] py-1 border-b border-white/5"
               >
                 {link.label}
               </a>

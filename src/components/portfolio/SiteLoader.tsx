@@ -45,13 +45,13 @@ export function SiteLoader() {
       }`}
     >
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between px-6 py-6 border-b border-white/5 sm:px-10">
-        <div className="font-mono text-xs uppercase tracking-[0.25em] text-white/50">
+      <div className="flex items-center justify-between px-4 sm:px-10 py-6 border-b border-white/5 min-w-0 w-full">
+        <div className="font-mono text-[11px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] text-white/50 truncate mr-2">
           [ Don Soby · Systems & Web Architecture ]
         </div>
-        <div className="flex items-center gap-2 font-mono text-xs text-[#00d4ff]">
+        <div className="flex items-center gap-2 font-mono text-xs text-[#00d4ff] shrink-0">
           <span className="h-1.5 w-1.5 rounded-full bg-[#00d4ff] animate-ping" />
-          <span>INITIALIZING</span>
+          <span className="hidden xs:inline">INITIALIZING</span>
         </div>
       </div>
 
@@ -89,12 +89,12 @@ export function SiteLoader() {
       </div>
 
       {/* Bottom Counter & Status */}
-      <div className="flex items-end justify-between px-6 py-8 border-t border-white/5 sm:px-10">
-        <div>
-          <p className="font-mono text-xs text-white/40 uppercase tracking-wider">
+      <div className="flex items-end justify-between px-4 py-8 border-t border-white/5 sm:px-10 min-w-0 w-full">
+        <div className="min-w-0 pr-4">
+          <p className="font-mono text-[11px] sm:text-xs text-white/40 uppercase tracking-wider">
             Loading Interface Modules
           </p>
-          <p className="mt-1 font-mono text-xs text-white/70">
+          <p className="mt-1 font-mono text-xs text-white/70 truncate">
             {progress < 40
               ? "Mounting runtime context..."
               : progress < 85
@@ -103,9 +103,9 @@ export function SiteLoader() {
           </p>
         </div>
 
-        <div className="font-mono text-6xl font-bold tracking-tighter text-white sm:text-8xl md:text-9xl">
+        <div className="font-mono text-5xl font-bold tracking-tighter text-white sm:text-8xl md:text-9xl shrink-0">
           <span className="text-[#00d4ff]">{progress}</span>
-          <span className="text-white/30 text-3xl sm:text-5xl">%</span>
+          <span className="text-white/30 text-2xl sm:text-5xl">%</span>
         </div>
       </div>
     </div>

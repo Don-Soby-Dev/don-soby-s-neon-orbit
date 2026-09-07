@@ -72,7 +72,7 @@ const capabilities: CapabilityGroup[] = [
 export function Skills() {
   return (
     <section id="skills" className="relative py-28 border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         {/* Section Intro */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
@@ -101,7 +101,7 @@ export function Skills() {
             return (
               <div
                 key={c.number}
-                className="editorial-card editorial-card-hover flex flex-col justify-between p-7 sm:p-8"
+                className="editorial-card editorial-card-hover flex flex-col justify-between p-5 sm:p-7 md:p-8"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-white/8 pb-4">

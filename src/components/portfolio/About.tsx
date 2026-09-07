@@ -25,7 +25,7 @@ const signals = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-28 border-t border-white/5">
+    <section id="about" className="relative py-20 sm:py-28 border-t border-white/5 overflow-hidden">
       {/* Background Depth Ambience */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full opacity-15 blur-[140px]"
@@ -35,9 +35,9 @@ export function About() {
         aria-hidden="true"
       />
 
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 min-w-0 w-full">
         {/* Section Intro */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl min-w-0">
           <div className="section-kicker">
             <span className="h-1.5 w-1.5 rounded-full bg-[#8b5cf6]" />
             <span>01 — The Throughline</span>
@@ -54,7 +54,7 @@ export function About() {
         </div>
 
         {/* Signal Marquee Ticker */}
-        <div className="mt-14 -mx-6 sm:-mx-8 border-y border-white/8 bg-white/[0.01] py-4">
+        <div className="mt-12 -mx-4 sm:-mx-8 border-y border-white/8 bg-white/[0.01] py-4 overflow-hidden w-[calc(100%+2rem)] sm:w-[calc(100%+4rem)]">
           <div className="marquee-container">
             <div className="marquee-content font-mono text-xs uppercase tracking-widest text-white/50">
               {signals.map((sig, idx) => (

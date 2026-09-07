@@ -96,11 +96,11 @@ const projects: Project[] = [
 
 export function Projects() {
   return (
-    <section id="work" className="relative py-28 border-t border-white/5">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+    <section id="work" className="relative py-20 sm:py-28 border-t border-white/5 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-8 min-w-0 w-full">
         {/* Section Heading */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
-          <div>
+          <div className="min-w-0">
             <div className="section-kicker">
               <span className="h-1.5 w-1.5 rounded-full bg-[#00d4ff]" />
               <span>02 — Selected Chapters</span>
@@ -114,17 +114,17 @@ export function Projects() {
             </p>
           </div>
 
-          <div className="font-mono text-xs text-white/40 hidden sm:block">
+          <div className="font-mono text-xs text-white/40 hidden sm:block shrink-0">
             [ 04 PRODUCTION CASE STUDIES ]
           </div>
         </div>
 
         {/* Case Studies Container */}
-        <div className="mt-16 space-y-24">
+        <div className="mt-12 sm:mt-16 space-y-16 sm:space-y-24 min-w-0 w-full">
           {projects.map((p) => (
             <article
               key={p.index}
-              className="editorial-card rounded-2xl border border-white/10 bg-[#060a12]/80 p-6 sm:p-10 backdrop-blur-2xl transition-all duration-300 hover:border-white/20"
+              className="editorial-card rounded-2xl border border-white/10 bg-[#060a12]/80 p-4 sm:p-8 md:p-10 backdrop-blur-2xl transition-all duration-300 hover:border-white/20 min-w-0 w-full"
             >
               {/* Project Heading Meta */}
               <div className="flex flex-col gap-3">
