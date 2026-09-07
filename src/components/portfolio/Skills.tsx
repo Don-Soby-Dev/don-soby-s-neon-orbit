@@ -1,84 +1,148 @@
-import { useReveal } from "@/hooks/use-reveal";
-import { Code, Boxes, Database, Cloud } from "lucide-react";
+import { Terminal, Database, Layout, Cloud, Shield, Zap } from "lucide-react";
 
-const groups = [
+interface CapabilityGroup {
+  icon: typeof Terminal;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  skills: string[];
+  highlight: string;
+}
+
+const capabilities: CapabilityGroup[] = [
   {
-    title: "Languages",
-    icon: Code,
-    items: ["Python", "JavaScript", "TypeScript", "Java", "C", "C++", "HTML5", "CSS3"],
+    icon: Terminal,
+    number: "01",
+    title: "Backend & Systems",
+    subtitle: "High-concurrency APIs & domain services",
+    description:
+      "Architecting scalable Python services with strict data validation, async task delegation, and resilient failure boundaries.",
+    skills: [
+      "Python 3.12",
+      "Django 5",
+      "Django REST",
+      "FastAPI",
+      "Celery",
+      "RESTful APIs",
+      "JWT Auth",
+    ],
+    highlight: "Sub-50ms P95 API Latency",
   },
   {
-    title: "Frameworks",
-    icon: Boxes,
-    items: [
-      "Django",
-      "Django REST Framework",
-      "FastAPI",
-      "Flask",
-      "React",
-      "React Query",
-      "TailwindCSS",
-      "Bootstrap",
+    icon: Layout,
+    number: "02",
+    title: "Modern Frontend",
+    subtitle: "Reactive client-side architecture",
+    description:
+      "Crafting high-speed, type-safe web interfaces with server-side rendering, optimistic caching, and accessible component primitives.",
+    skills: [
+      "React 19",
+      "TypeScript",
+      "TanStack Router",
+      "TanStack Query",
+      "Tailwind CSS v4",
+      "shadcn/ui",
       "Vite",
     ],
+    highlight: "Zero-Layout-Shift SSR",
   },
   {
-    title: "Databases",
     icon: Database,
-    items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite", "Firebase"],
+    number: "03",
+    title: "Databases & Caching",
+    subtitle: "Data integrity & sub-millisecond retrieval",
+    description:
+      "Designing relational schemas with composite indexing, connection pooling, and atomic Redis cache-aside patterns.",
+    skills: ["PostgreSQL", "Redis 7", "MySQL", "MongoDB", "SQLite", "Firebase", "Query Profiling"],
+    highlight: "94%+ Cache Hit Ratios",
   },
   {
-    title: "Cloud & Tools",
     icon: Cloud,
-    items: ["AWS", "Google Cloud", "Vercel", "Docker", "Git/GitHub", "Postman", "Figma"],
+    number: "04",
+    title: "Cloud & DevOps",
+    subtitle: "Containerization & continuous delivery",
+    description:
+      "Automating reproducible deployment pipelines with lightweight multi-stage Docker builds, Linux administration, and CI/CD.",
+    skills: ["Docker", "AWS", "Google Cloud", "Vercel", "Git/GitHub", "Linux / Bash", "Postman"],
+    highlight: "Multi-Stage Slim Containers",
   },
 ];
 
 export function Skills() {
-  const ref = useReveal<HTMLDivElement>();
   return (
-    <section id="skills" className="relative py-28">
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(139,92,246,0.2), transparent 70%)",
-        }}
-        aria-hidden
-      />
-      <div ref={ref} className="reveal relative mx-auto max-w-6xl px-6">
-        <div className="text-center">
-          <div className="text-xs uppercase tracking-[0.4em] text-[#8b5cf6]/90">
-            02 — Skills
-          </div>
-          <h2 className="mt-4 font-display text-4xl font-bold sm:text-5xl">
-            The <span className="glow-text">stack</span> I ship with
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {groups.map(({ title, icon: Icon, items }) => (
-            <div key={title} className="glass-card hover-glow p-6 sm:p-7">
-              <div className="flex items-center gap-3">
-                <div
-                  className="flex h-10 w-10 items-center justify-center rounded-lg"
-                  style={{ background: "var(--gradient-accent)" }}
-                >
-                  <Icon className="h-5 w-5 text-[#0a0e17]" />
-                </div>
-                <h3 className="font-display text-xl font-semibold">{title}</h3>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-white/80 transition hover:border-[#00d4ff]/50 hover:bg-white/[0.06] hover:text-white hover:shadow-[0_0_16px_rgba(0,212,255,0.25)]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+    <section id="skills" className="relative py-28 border-t border-white/5">
+      <div className="mx-auto max-w-6xl px-6 sm:px-8">
+        {/* Section Intro */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <div>
+            <div className="section-kicker">
+              <span className="h-1.5 w-1.5 rounded-full bg-violet-400" />
+              <span>03 — Capabilities & Tech Stack</span>
             </div>
-          ))}
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Engineered across the <span className="glow-gradient-text">entire stack.</span>
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/60 sm:text-base">
+              From database query planners and async event loops to responsive, type-safe client
+              interfaces.
+            </p>
+          </div>
+
+          <div className="font-mono text-xs text-white/40 hidden sm:block">
+            [ 4 CORE ARCHITECTURAL PILLARS ]
+          </div>
+        </div>
+
+        {/* Capabilities Grid */}
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
+          {capabilities.map((c) => {
+            const Icon = c.icon;
+            return (
+              <div
+                key={c.number}
+                className="editorial-card editorial-card-hover flex flex-col justify-between p-7 sm:p-8"
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b border-white/8 pb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] text-[#00d4ff]">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-lg font-bold text-white sm:text-xl">
+                          {c.title}
+                        </h3>
+                        <p className="font-mono text-[11px] text-white/50">{c.subtitle}</p>
+                      </div>
+                    </div>
+                    <span className="font-mono text-xs text-white/30">{c.number}</span>
+                  </div>
+
+                  <p className="mt-5 text-sm leading-relaxed text-white/70">{c.description}</p>
+
+                  {/* Skills Pills */}
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {c.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-lg border border-white/8 bg-white/[0.02] px-3 py-1.5 font-mono text-xs text-white/80 transition hover:border-[#00d4ff]/40 hover:bg-[#00d4ff]/5 hover:text-white"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Highlight Banner */}
+                <div className="mt-8 flex items-center gap-2 rounded-xl border border-white/5 bg-white/[0.01] px-4 py-2.5 font-mono text-xs text-white/60">
+                  <Zap className="h-3.5 w-3.5 text-[#00d4ff]" />
+                  <span>Target Benchmark:</span>
+                  <span className="text-[#00d4ff] font-semibold">{c.highlight}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

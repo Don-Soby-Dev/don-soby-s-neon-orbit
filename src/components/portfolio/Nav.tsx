@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "Philosophy" },
+  { href: "#workbench", label: "Workbench" },
+  { href: "#work", label: "Selected Work" },
+  { href: "#skills", label: "Capabilities" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -20,58 +22,91 @@ export function Nav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "backdrop-blur-xl bg-[#0a0e17]/70 border-b border-white/5"
-          : "bg-transparent"
+          ? "border-b border-white/8 bg-[#030508]/85 backdrop-blur-xl py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "bg-transparent py-5"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#hero" className="font-display text-lg font-bold tracking-tight">
-          <span className="glow-text">DS</span>
-          <span className="text-white/80">.dev</span>
-        </a>
-        <ul className="hidden md:flex items-center gap-8 text-sm text-white/70">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="relative transition-colors hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gradient-to-r after:from-[#00d4ff] after:to-[#8b5cf6] after:transition-all hover:after:w-full"
-              >
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 sm:px-8">
+        {/* Brand */}
         <a
-          href="#contact"
-          className="hidden md:inline-flex items-center rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-white/90 transition hover:border-[#00d4ff]/60 hover:text-white hover:shadow-[0_0_20px_rgba(0,212,255,0.35)]"
+          href="#top"
+          className="group flex items-center gap-2 font-display text-lg font-bold tracking-tight text-white transition hover:opacity-80"
+          aria-label="Don Soby portfolio home"
         >
-          Say Hello
+          <span>DonSoby.</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-[#00d4ff] group-hover:scale-125 transition-transform" />
         </a>
-        <button
-          className="md:hidden text-white/80"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          <div className="space-y-1.5">
-            <span className={`block h-px w-6 bg-white transition ${open ? "translate-y-1.5 rotate-45" : ""}`} />
-            <span className={`block h-px w-6 bg-white transition ${open ? "opacity-0" : ""}`} />
-            <span className={`block h-px w-6 bg-white transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-1 rounded-full border border-white/8 bg-white/[0.02] px-4 py-1.5 backdrop-blur-md">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="px-3 py-1 font-mono text-xs text-white/70 transition-colors hover:text-white hover:text-[#00d4ff]"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Status Pill & Action */}
+        <div className="hidden sm:flex items-center gap-4">
+          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[11px] text-white/70">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Available for opportunities</span>
           </div>
+
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white px-4 py-1.5 text-xs font-semibold text-[#030508] transition hover:bg-white/90 hover:scale-[1.02]"
+          >
+            <span>Get in Touch</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-label="Toggle navigation menu"
+        >
+          {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
       </nav>
+
+      {/* Mobile Drawer */}
       {open && (
-        <div className="md:hidden border-t border-white/5 backdrop-blur-xl bg-[#0a0e17]/90">
-          <ul className="flex flex-col px-6 py-4 gap-4 text-sm text-white/80">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} onClick={() => setOpen(false)}>
-                  {l.label}
-                </a>
-              </li>
+        <div className="md:hidden border-b border-white/10 bg-[#030508]/95 px-6 py-6 backdrop-blur-2xl">
+          <div className="flex flex-col gap-4">
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 mb-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Available for opportunities · Kerala, IN</span>
+            </div>
+
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="font-display text-lg font-medium text-white/80 transition hover:text-[#00d4ff]"
+              >
+                {link.label}
+              </a>
             ))}
-          </ul>
+
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white py-3 text-center text-xs font-semibold text-[#030508]"
+            >
+              <span>Get in Touch</span>
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       )}
     </header>

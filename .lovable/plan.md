@@ -37,7 +37,7 @@ Update `src/routes/index.tsx` `head()` with:
 - title: "Don Soby — Full Stack Python Developer"
 - description: Kerala-based Django + React developer tagline
 - og:title, og:description, og:type=website, twitter:card=summary_large_image
-Keep `__root.tsx` metadata untouched (per rule, index gets its own head).
+  Keep `__root.tsx` metadata untouched (per rule, index gets its own head).
 
 ## Content (verbatim from spec)
 
@@ -59,8 +59,8 @@ No Lovable Cloud, no images generated (pure CSS visuals keep it lightweight per 
 
 ## Question
 
-GitHub project links — should each project card link to your GitHub profile (`Don-Soby-Dev`), or do you have specific repo URLs for the 4 projects? I'll default to profile links if not provided.  
-  
+GitHub project links — should each project card link to your GitHub profile (`Don-Soby-Dev`), or do you have specific repo URLs for the 4 projects? I'll default to profile links if not provided.
+
 **Changes I want in the Plan**  
 Answer to your question: just add only Ongo-ecommerce as a project card. Make sure to add the live link along with the repo link: **[ongo-styles.online](http://ongo-styles.online)**  
-Just add space for  one photo in the Hero section. I will add the photo after generation; you just give me the instructions to add the photo.
+Just add space for one photo in the Hero section. I will add the photo after generation; you just give me the instructions to add the photo.
